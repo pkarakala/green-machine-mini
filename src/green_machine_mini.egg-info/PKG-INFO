@@ -1,0 +1,78 @@
+Metadata-Version: 2.4
+Name: green-machine-mini
+Version: 0.1.0
+Summary: Educational toy model of the Green Machine photonic interconnect for distributed modular quantum computing
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.26
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+
+# green-machine-mini
+
+An educational toy model of the **Green Machine** photonic interconnect architecture for distributed modular quantum computing.
+
+## What This Is
+
+This project models the **communication/interconnect layer** between heterogeneous quantum hardware modules. It does **not** simulate trapped-ion, NV-center, or Rydberg-atom physics. Those hardware backends are intentionally owned elsewhere. This repository owns only what happens *between* them: the photonic channel that carries entanglement from module to module.
+
+The Green Machine is a time-multiplexed linear optical network. A single spatial photonic mode is reused across many time bins, with Mach-Zehnder Interferometers (MZIs) routing and interfering photons to generate, route, and fuse entanglement between physically separated quantum processors.
+
+## What This Is Not
+
+- Not a production quantum simulator
+- Not a hardware physics engine
+- Not a replacement for tools like QuTiP, Qiskit, or CasOptAx
+
+## Project Structure
+
+```
+src/green_machine_mini/
+├── modules/          # Placeholder external hardware endpoints (no physics here)
+├── interconnect/     # Green Machine: MZIs, time bins, interconnect logic
+├── protocols/        # Boosted Bell-state measurement
+└── qec/              # Distributed logical qubit encoding (W-code placeholder)
+```
+
+## Setup
+
+```bash
+# Clone and enter the repo
+git clone <repo-url>
+cd green-machine-mini
+
+# Create and activate a virtual environment
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+
+# Install in editable mode with dev dependencies
+pip install -e ".[dev]"
+```
+
+## Run the Demo
+
+```bash
+python experiments/run_skeleton_demo.py
+```
+
+## Run Tests
+
+```bash
+pytest
+```
+
+## Read the Docs
+
+Start with [`docs/01_project_concept.md`](docs/01_project_concept.md) for the conceptual overview, then proceed in order.
+
+## Ownership Boundary
+
+| Layer | Owner |
+|---|---|
+| Trapped-ion qubit preparation | External hardware team |
+| NV-center qubit preparation | External hardware team |
+| Rydberg qubit preparation | External hardware team |
+| Photonic interconnect (this repo) | green-machine-mini |
+| Boosted BSM (this repo) | green-machine-mini |
+| Entanglement routing (this repo) | green-machine-mini |
+| Distributed logical qubit encoding (this repo) | green-machine-mini |
