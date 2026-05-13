@@ -13,6 +13,7 @@ The Green Machine is a time-multiplexed linear optical network. A single spatial
 - Not a production quantum simulator
 - Not a hardware physics engine
 - Not a replacement for tools like QuTiP, Qiskit, or CasOptAx
+- Not an official implementation of either paper listed below
 
 ## Project Structure
 
@@ -57,12 +58,28 @@ Start with [`docs/01_project_concept.md`](docs/01_project_concept.md) for the co
 
 ## Ownership Boundary
 
+Hardware-specific qubit preparation for trapped-ion, NV-center, and Rydberg modules is owned by a separate engineer and is entirely outside this repo. The `QuantumHardwareModule` classes here are opaque external endpoint placeholders — they contain no hardware physics. This repo owns only what happens *between* modules: the photonic channel and the protocols that run on it.
+
 | Layer | Owner |
 |---|---|
-| Trapped-ion qubit preparation | External hardware team |
-| NV-center qubit preparation | External hardware team |
-| Rydberg qubit preparation | External hardware team |
-| Photonic interconnect (this repo) | green-machine-mini |
-| Boosted BSM (this repo) | green-machine-mini |
-| Entanglement routing (this repo) | green-machine-mini |
-| Distributed logical qubit encoding (this repo) | green-machine-mini |
+| Trapped-ion qubit preparation | External (separate engineer) |
+| NV-center qubit preparation | External (separate engineer) |
+| Rydberg qubit preparation | External (separate engineer) |
+| Photonic interconnect | This repo |
+| Boosted BSM | This repo |
+| Entanglement routing | This repo |
+| Distributed logical qubit encoding | This repo |
+
+## Research Attribution
+
+This project is an educational/research toy model inspired by the following papers. It is **not** an official implementation of either.
+
+**Green Machine architecture**
+Jasvith Raj Basani, Chaohan Cui, Jack Postlewaite, Edo Waks, Saikat Guha.
+*"Hardware-Efficient Universal Linear Transformations for Optical Modes in the Synthetic Time Dimension."*
+Inspiration: time-bin photonic interconnect, recursive MZI architecture, boosted Bell-state measurement benchmark.
+
+**Distributed approximate quantum error correction**
+Connor Clayton and Bruno Avritzer.
+*"Distributed Quantum Error Correction with Permutation-Invariant Approximate Codes."*
+Inspiration: distributed approximate QEC framing, W-state/permutation-invariant code intuition, logical qubit information distributed across multiple processors.

@@ -16,6 +16,23 @@ physically separated quantum modules requires flying photons.
 
 ---
 
+## Research attribution
+
+`green-machine-mini` is an educational/research toy model. It is **not** an official implementation
+of either paper below — it exists to build intuition and support future experiments.
+
+**Green Machine architecture:**
+Jasvith Raj Basani, Chaohan Cui, Jack Postlewaite, Edo Waks, Saikat Guha.
+*"Hardware-Efficient Universal Linear Transformations for Optical Modes in the Synthetic Time Dimension."*
+Inspiration: time-bin photonic interconnect, recursive MZI architecture, boosted Bell-state measurement benchmark.
+
+**Distributed approximate quantum error correction:**
+Connor Clayton and Bruno Avritzer.
+*"Distributed Quantum Error Correction with Permutation-Invariant Approximate Codes."*
+Inspiration: distributed approximate QEC framing, W-state/permutation-invariant code intuition, logical qubit information distributed across multiple processors.
+
+---
+
 ## What is green-machine-mini?
 
 `green-machine-mini` is an educational toy model of the **photonic interconnect layer** between
@@ -37,7 +54,10 @@ It does **not** model:
 
 ## Ownership boundary
 
-This project is intentionally scoped to the **interconnect layer only**.
+This project is intentionally scoped to the **interconnect layer only**. Hardware-specific qubit
+preparation for trapped-ion, NV-center, and Rydberg modules is owned by a separate engineer and
+lives entirely outside this repo. The `QuantumHardwareModule` classes here are opaque external
+endpoint placeholders — they contain no hardware physics.
 
 ```
 ┌─────────────┐        ┌───────────────────────────────┐        ┌─────────────┐
@@ -53,8 +73,8 @@ This project is intentionally scoped to the **interconnect layer only**.
 └─────────────┘        └───────────────────────────────┘
 ```
 
-The hardware boxes on the left and right are opaque endpoints. The interconnect does not know
-how qubits were prepared inside them.
+The hardware boxes on the left and right are opaque endpoints. The interconnect does not know or
+simulate how qubits were prepared inside them.
 
 ---
 
