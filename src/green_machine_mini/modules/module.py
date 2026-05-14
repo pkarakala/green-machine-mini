@@ -2,7 +2,7 @@
 Placeholder external quantum hardware endpoints.
 
 This module defines the boundary between the Green Machine interconnect and the
-physical quantum hardware that lives outside this repository. Each QuantumHardwareModule
+physical quantum hardware that lives outside this repository. Each  QuantumHardwareModule(function name) 
 represents one hardware node — a trapped-ion trap, an NV-center setup, a Rydberg array,
 etc. — that has been prepared by an external team and is capable of emitting a photon
 into the Green Machine optical channel.
