@@ -43,7 +43,7 @@ The action of a single MZI on its two input modes is described by a 2×2 unitary
 
 ```
 U(θ, φ) = [ e^{iφ} cos θ    -sin θ ]
-           [ e^{iφ} sin θ     cos θ ]
+          [ e^{iφ} sin θ     cos θ ]
 ```
 
 where θ controls how much light is split between the two arms, and φ is the differential phase.
